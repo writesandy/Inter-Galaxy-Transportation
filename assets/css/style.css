@@ -1,0 +1,18 @@
+body {
+    background-image: url(../images/millenial-falcon.jpg);
+}
+
+.jumbotron {
+    opacity: .4;
+    color: black;
+}
+
+.panel-default>.panel-heading {
+    background-color: cornsilk;
+}
+
+.btn-default {
+    background-color: sandybrown;
+    border-color: sandybrown;
+    
+}
