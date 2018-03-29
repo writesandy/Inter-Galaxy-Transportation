@@ -1,10 +1,5 @@
 $( document ).ready(function() {
 
-let tName = "";
-let dest = "";
-let firstDep= "";
-let freq = 0;
-let nextArrival = "";
 
 
   // Initialize Firebase
@@ -16,7 +11,14 @@ let nextArrival = "";
     storageBucket: "automagical-12e81.appspot.com",
     messagingSenderId: "757412646085"
   };
+
   firebase.initializeApp(config);
+
+    let tName = "";
+    let dest = "";
+    let firstDep= "";
+    let freq = 0;
+    let nextArrival = "";
 
   database = firebase.database();
 
@@ -27,6 +29,8 @@ let nextArrival = "";
     let dest = $("#destination").val().trim();
     let firstDep= $("#first-dep").val().trim();
     let freq = $("#frequency").val().trim();
+
+    // clear all the text boxes
 
     $("#transport-name").val("")
     $("#destination").val("");
@@ -41,12 +45,29 @@ let nextArrival = "";
         date: firebase.database.ServerValue.TIMESTAMP,
     });
 
-
-
  });
 
- function transMins () {
-     database.ref().child('L8jBq6po6qFz3XcGbdC').once
- }
+    //function for taking data from firebase db and showing it in DOM
+
+    database.ref().on("child_added", function(childSnapshot, prevChildkey) {
+
+        console.log(childSnapshot.val());
+
+        let tName = childSnapshot.val().tName;
+        let dest = childSnapshot.val().dest;
+        let freq = childSnapshot.val().freq;
+
+        // Add data to table
+
+        $('#trans-sched-table > tbody').append("<tr><td>" + tName + "</td><td>" + dest + "</td><td>" + freq + "</td><td>"+ "</td><td>")
+
+    });
+
+
+
+
+
+
+ 
 
 });
