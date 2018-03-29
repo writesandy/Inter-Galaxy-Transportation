@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstat/firebasejs/live/3.0/firebase.js"></script>
+    <<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
 
 
@@ -48,8 +48,8 @@
               <table class="table table-hover" id='trans-sched-table'>
                 <thead>
                   <tr>
-                    <th>Train Name</th>
-                    <th>Train Destination</th>
+                    <th>Transport Name</th>
+                    <th>Transport Destination</th>
                     <th>Frequency (min)</th>
                     <th>Next Arrival</th>
                     <th>Minutes Away</th>
@@ -79,14 +79,14 @@
                   <input class="form-control" id="destination" type="text">
                 </div>
                 <div class="form-group">
-                  <label for="first-train">First Transport Time (HH:MM - ex: military time)</label>
-                  <input class="form-control" id="first-train" type="text">
+                  <label for="first-dep">First Transport Departure (HH:MM - ex: military time)</label>
+                  <input class="form-control" id="first-dep" type="text">
                 </div>
                 <div class="form-group">
                   <label for="rate-input">Frequency</label>
                   <input class="form-control" id="frequency" type="text">
                 </div>
-                <button class="btn-lg btn-default" id="add-frequency-btn" type="submit">Submit</button>
+                <button class="btn-lg btn-default" id="submit-btn" type="submit">Submit</button>
               </form>
 
             </div>
@@ -103,7 +103,7 @@
     <!-- Moment.js Reference -->
     <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <script src="javascript.js"></script>
+    <script src="./assets/javascript/javascript.js"></script>
 
   </body>
 
