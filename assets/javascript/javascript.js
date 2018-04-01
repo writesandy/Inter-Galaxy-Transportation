@@ -50,24 +50,58 @@ $( document ).ready(function() {
     //function for taking data from firebase db and showing it in DOM
 
     database.ref().on("child_added", function(childSnapshot, prevChildkey) {
+  
 
         console.log(childSnapshot.val());
 
         let tName = childSnapshot.val().tName;
         let dest = childSnapshot.val().dest;
         let freq = childSnapshot.val().freq;
+        let firstDep = childSnapshot.val().firstDep;
+
+        if (tName === "") {
+
+        } else {
+
+        //First time transport runs
+
+        let firstDepConverted = moment(firstDep, "hh:mm").subtract(1, "years");
+        console.log(firstDepConverted);
+
+        // Current Time
+
+        let currentTime = moment();
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+        // Difference between the times
+
+        let diffTime = moment().diff(moment(firstDepConverted), "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        // Time apart (remainder)
+
+        let tRemainder = diffTime % freq;
+        console.log(tRemainder);
+
+        // Minutes Until Transport
+
+        let tMinutesTillTrans = freq - tRemainder;
+        console.log("MINUTES TILL TRAIN :" +tMinutesTillTrans);
+
+        let nextArrival = moment(currentTime).add(tMinutesTillTrans, "minutes").format("hh:mm");
+        console.log("TRANSPORT ARRIVAL: " +nextArrival);
 
         // Add data to table
 
-        $('#trans-sched-table > tbody').append("<tr><td>" + tName + "</td><td>" + dest + "</td><td>" + freq + "</td><td>"+ "</td><td>")
+        $('#trans-sched-table > tbody').append("<tr><td>" + tName + "</td><td>" + dest + "</td><td>" + freq + "</td><td>"+ nextArrival +"</td><td>" + tMinutesTillTrans)
+        }
 
     });
 
+ //calculate first transport time
+//  first transport time + frequency = next arrival
+// update first transport time to now() on arrival, then + frequency 
 
 
-
-
-
- 
 
 });
